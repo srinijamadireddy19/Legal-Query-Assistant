@@ -1,1 +1,8 @@
 PyPDF2==3.0.1
+pdfplumber==0.10.3
+python-docx==1.1.0
+reportlab
+pillow
+opencv-python
+pytesseract
+pdf2image

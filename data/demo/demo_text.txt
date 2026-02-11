@@ -1,0 +1,18 @@
+MEETING MINUTES — BOARD MEETING
+Date: August 15, 2025
+
+ATTENDEES
+Alice Chen (Chair), Bob Martinez (CFO), Carol Singh (CTO)
+
+AGENDA ITEM 1 — Q3 Financial Review
+Q3 revenue came in at $4.2M, 12% above forecast.
+Operating expenses were well controlled at $2.8M.
+
+AGENDA ITEM 2 — Product Roadmap
+The team approved the v5.0 feature set for Q4 release.
+Key features: AI assistant integration, multi-language support.
+
+ACTION ITEMS
+1. Alice: Publish Q3 earnings report by August 20.
+2. Bob:   Finalise Q4 budget by September 1.
+3. Carol: Share v5.0 spec for board review.
