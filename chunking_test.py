@@ -1,7 +1,8 @@
 from legal_rag_chunker import HierarchicalChunkingPipeline
 from doc_extracter import DocumentIngestionPipeline
+from embedding_pipeline import EmbeddingPipeline
 
-file_path = "data/sample.pdf"
+file_path = "data\Partnership deed.pdf"
 
 ingest_pipeline = DocumentIngestionPipeline()
 ingest_result = ingest_pipeline.ingest(file_path)
@@ -32,3 +33,8 @@ for i, chunk in enumerate(chunking_result.chunks[:5], 1):  # Show first 5 chunks
     
 if len(chunking_result.chunks) > 5:
     print(f"\n... and {len(chunking_result.chunks) - 5} more chunks")
+
+emb_pipeline = EmbeddingPipeline()
+result = emb_pipeline.embed_chunks(chunking_result.chunks)
+
+print(result.summary())

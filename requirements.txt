@@ -6,3 +6,5 @@ pillow
 opencv-python
 pytesseract
 pdf2image
+fastembed
+sentence-transformers
