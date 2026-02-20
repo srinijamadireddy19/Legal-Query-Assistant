@@ -62,6 +62,9 @@ class FastEmbedder(BaseEmbedder):
         """Load FastEmbed model."""
         try:
             from fastembed import TextEmbedding
+            import os
+
+            os.environ['HF_HUB_DISABLE_SYMLINKS'] = "1"
             
             log.info(f"Loading FastEmbed model: {self.config.model_name}")
             

@@ -128,7 +128,7 @@ class EmbeddingConfig:
     Provides sensible defaults, allows overrides.
     """
     # Primary model
-    model_name:      str = "BAAI/bge-large-en-v1.5"
+    model_name:      str = "BAAI/bge-base-en-v1.5"
     
     # Fallback model (used if primary fails to load)
     fallback_model:  Optional[str] = "sentence-transformers/all-MiniLM-L6-v2"
