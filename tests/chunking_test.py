@@ -7,9 +7,11 @@ from embedding_pipeline.core.models import (
     EmbeddingResult,
     EmbeddingStatus,
 )
-from embedding_pipeline.embedders.fastembed_embedder import FastEmbedder
+from vector_storage_pipeline.pipeline import VectorStoragePipeline
+from vector_storage_pipeline.stores.typesense_store import TypesenseVectorStore
+from vector_storage_pipeline.core.models import StorageConfig
 
-file_path = "data/sample.pdf"
+file_path = "data/partnership deed.pdf"
 
 print('*'*60)
 ingest_pipeline = DocumentIngestionPipeline()
@@ -44,6 +46,7 @@ if len(chunking_result.chunks) > 5:
     print(f"\n... and {len(chunking_result.chunks) - 5} more chunks")
 
 print('*'*60)
+
 config = EmbeddingConfig()
 print(config.model_name)
 print(config.fallback_model)
@@ -64,3 +67,9 @@ for i, chunk in enumerate(chunking_result.chunks):
 
 result = EmbeddingResult(embeddings=chunk_emb,status=EmbeddingStatus.SUCCESS)
 print(result.summary())
+
+print("\n" + "-" * 80)
+print("CHUNKS:")
+print("-" * 80)
+
+print()

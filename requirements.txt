@@ -9,3 +9,5 @@ pdf2image
 fastembed
 sentence-transformers
 typesense
+python-dotenv
+groq
