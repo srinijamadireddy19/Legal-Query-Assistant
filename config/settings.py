@@ -12,13 +12,16 @@ from typing import Optional
 import sys
 sys.path.insert(0, "/home/claude")
 
-from doc_pipeline import DocumentIngestionPipeline
-from legal_rag_chunker import HierarchicalChunkingPipeline
-from embedding_pipeline import EmbeddingPipeline, EmbeddingConfig
-from vector_storage import VectorStoragePipeline, StorageConfig
-from llm_pipeline import LLMPipeline, LLMConfig
+from doc_extracter.pipeline import DocumentIngestionPipeline
+from legal_rag_chunker.pipeline import HierarchicalChunkingPipeline
+from embedding_pipeline.pipeline import EmbeddingPipeline, EmbeddingConfig
+from vector_storage_pipeline.pipeline import VectorStoragePipeline, StorageConfig
+from llm_pipeline.pipeline import LLMPipeline, LLMConfig
 
 log = logging.getLogger(__name__)
+
+import dotenv
+dotenv.load_dotenv()
 
 
 class RAGConfig:
@@ -33,19 +36,19 @@ class RAGConfig:
     API_PORT: int = int(os.getenv("API_PORT", "8000"))
     
     # Embedding
-    EMBEDDING_MODEL: str = os.getenv("EMBEDDING_MODEL", "BAAI/bge-large-en-v1.5")
+    EMBEDDING_MODEL: str = os.getenv("EMBEDDING_MODEL", "BAAI/bge-base-en-v1.5")
     EMBEDDING_FALLBACK: str = os.getenv("EMBEDDING_FALLBACK", "sentence-transformers/all-MiniLM-L6-v2")
-    EMBEDDING_DIM: int = int(os.getenv("EMBEDDING_DIM", "1024"))
+    EMBEDDING_DIM: int = int(os.getenv("EMBEDDING_DIM", "768"))
     
     # Vector Storage (Typesense)
-    TYPESENSE_HOST: str = os.getenv("TYPESENSE_HOST", "localhost")
-    TYPESENSE_PORT: int = int(os.getenv("TYPESENSE_PORT", "8108"))
-    TYPESENSE_PROTOCOL: str = os.getenv("TYPESENSE_PROTOCOL", "http")
-    TYPESENSE_API_KEY: str = os.getenv("TYPESENSE_API_KEY", "xyz")
+    TYPESENSE_HOST: str = os.getenv("TYPESENSE_HOST")
+    TYPESENSE_PORT: int = int(os.getenv("TYPESENSE_PORT"))
+    TYPESENSE_PROTOCOL: str = os.getenv("TYPESENSE_PROTOCOL")
+    TYPESENSE_API_KEY: str = os.getenv("TYPESENSE_API_KEY")
     
     # LLM (Groq)
-    GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
-    LLM_MODEL: str = os.getenv("LLM_MODEL", "llama-3.1-70b-versatile")
+    GROQ_API_KEY: str = os.getenv("GROQ_API_KEY")
+    LLM_MODEL: str = os.getenv("LLM_MODEL", "llama-8b-instant")
     LLM_TEMPERATURE: float = float(os.getenv("LLM_TEMPERATURE", "0.1"))
     LLM_MAX_TOKENS: int = int(os.getenv("LLM_MAX_TOKENS", "1024"))
     

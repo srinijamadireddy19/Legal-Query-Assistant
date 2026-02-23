@@ -7,15 +7,15 @@ Endpoints for document upload and processing.
 from fastapi import APIRouter, UploadFile, File, HTTPException, Depends
 from typing import List
 
-from ..schemas.models import (
+from schemas.models import (
     DocumentUploadResponse,
     DocumentProcessRequest,
     DocumentProcessResponse,
     DocumentStatusResponse,
     DocumentStatus,
 )
-from ..services.document_service import DocumentService
-from ..config.settings import get_pipeline_manager, PipelineManager
+from services.document_service import DocumentService
+from config.settings import get_pipeline_manager, PipelineManager
 
 router = APIRouter(prefix="/documents", tags=["Documents"])
 

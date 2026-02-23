@@ -11,7 +11,7 @@ import time
 from pathlib import Path
 from typing import Dict, Any
 
-from ..config.settings import RAGConfig, PipelineManager
+from config.settings import RAGConfig, PipelineManager
 
 log = logging.getLogger(__name__)
 

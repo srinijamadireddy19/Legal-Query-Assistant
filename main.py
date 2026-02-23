@@ -23,9 +23,9 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
-from .config.settings import RAGConfig, get_pipeline_manager
-from .routers import documents, query, collections
-from .schemas.models import HealthResponse, SystemStatusResponse
+from config.settings import RAGConfig, get_pipeline_manager
+from routers import documents, query, collections
+from schemas.models import HealthResponse, SystemStatusResponse
 
 # Configure logging
 logging.basicConfig(
@@ -33,6 +33,9 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 log = logging.getLogger(__name__)
+
+import dotenv
+dotenv.load_dotenv()
 
 
 @asynccontextmanager

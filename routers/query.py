@@ -6,13 +6,13 @@ Endpoints for RAG queries and conversation management.
 
 from fastapi import APIRouter, HTTPException, Depends
 
-from ..schemas.models import (
+from schemas.models import (
     QueryRequest,
     QueryResponse,
     ConversationHistoryResponse,
 )
-from ..services.query_service import QueryService
-from ..config.settings import get_pipeline_manager, PipelineManager
+from services.query_service import QueryService
+from config.settings import get_pipeline_manager, PipelineManager
 
 router = APIRouter(prefix="/query", tags=["Query"])
 

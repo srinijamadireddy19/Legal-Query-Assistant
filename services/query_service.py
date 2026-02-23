@@ -8,8 +8,8 @@ import uuid
 import logging
 from typing import Dict, Any
 
-from ..config.settings import PipelineManager
-from llm_pipeline import LLMPipeline
+from config.settings import PipelineManager
+from llm_pipeline.pipeline import LLMPipeline
 
 log = logging.getLogger(__name__)
 

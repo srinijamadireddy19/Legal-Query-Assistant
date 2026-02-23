@@ -11,3 +11,6 @@ sentence-transformers
 typesense
 python-dotenv
 groq
+fastapi
+uvicorn
+python-multipart
