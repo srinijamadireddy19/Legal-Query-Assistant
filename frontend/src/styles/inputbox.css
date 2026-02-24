@@ -69,3 +69,31 @@
   color: rgba(187,148,87,0.28);
   cursor: default;
 }
+
+.input-box__file-input {
+  display: none;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.input-box__attach-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 11px;
+  transition: background 0.2s, transform 0.15s, color 0.2s;
+  background-color: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+}

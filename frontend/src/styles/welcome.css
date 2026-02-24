@@ -1,106 +1,112 @@
 /* ── Welcome Screen ─────────────────────────────────── */
 .welcome {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 24px;
-  animation: fadeSlideIn 0.5s ease both;
-  overflow-y: auto;           /* fallback for small viewports */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px 40px;
+    /* extra top padding so emblem isn't clipped */
+    animation: fadeSlideIn 0.5s ease both;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /* Emblem */
 .welcome__emblem {
-  width: 120px;
-  height: 120px;
-  margin-bottom: 30px;
-  padding: 24px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(111,29,27,0.45), rgba(26,15,13,0.9));
-  border: 1px solid rgba(187,148,87,0.3);
-  animation: pulse-border 3s ease-in-out infinite;
+    width: 120px;
+    height: 120px;
+    margin-top: 10px;
+    /* push emblem away from any clipping edge */
+    margin-bottom: 30px;
+    padding: 24px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(111, 29, 27, 0.45), rgba(26, 15, 13, 0.9));
+    border: 1px solid rgba(187, 148, 87, 0.3);
+    box-shadow: 0 0 0 6px rgba(26, 15, 13, 0.6);
+    /* extra clearance so glow isn't clipped */
+    animation: pulse-border 3s ease-in-out infinite;
 }
 
 /* Heading */
 .welcome__heading {
-  font-family: 'Cinzel', serif;
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--light-apricot);
-  letter-spacing: 0.06em;
-  text-align: center;
-  margin-bottom: 10px;
-  text-shadow: 0 0 40px rgba(187,148,87,0.25);
+    font-family: 'Cinzel', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--light-apricot);
+    letter-spacing: 0.06em;
+    text-align: center;
+    margin-bottom: 10px;
+    text-shadow: 0 0 40px rgba(187, 148, 87, 0.25);
 }
 
 .welcome__tagline {
-  font-family: 'EB Garamond', serif;
-  font-size: 17px;
-  font-style: italic;
-  color: rgba(232,213,176,0.55);
-  text-align: center;
-  max-width: 440px;
-  line-height: 1.65;
-  margin-bottom: 44px;
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: rgba(232, 213, 176, 0.55);
+    text-align: center;
+    max-width: 440px;
+    line-height: 1.65;
+    margin-bottom: 44px;
 }
 
 /* Ornament divider */
 .ornament {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  max-width: 620px;
-  margin-bottom: 28px;
-  color: rgba(187,148,87,0.4);
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 620px;
+    margin-bottom: 28px;
+    color: rgba(187, 148, 87, 0.4);
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
 }
 
 .ornament::before,
 .ornament::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(187,148,87,0.35), transparent);
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(187, 148, 87, 0.35), transparent);
 }
 
 /* Suggestion grid */
 .suggestions {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px;
-  width: 100%;
-  max-width: 660px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    width: 100%;
+    max-width: 660px;
 }
 
 .suggestion-chip {
-  background: rgba(111,29,27,0.13);
-  border: 1px solid rgba(187,148,87,0.22);
-  border-radius: 12px;
-  padding: 14px 18px;
-  color: rgba(232,213,176,0.72);
-  text-align: left;
-  cursor: pointer;
-  font-size: 13.5px;
-  font-family: 'EB Garamond', serif;
-  line-height: 1.55;
-  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+    background: rgba(111, 29, 27, 0.13);
+    border: 1px solid rgba(187, 148, 87, 0.22);
+    border-radius: 12px;
+    padding: 14px 18px;
+    color: rgba(232, 213, 176, 0.72);
+    text-align: left;
+    cursor: pointer;
+    font-size: 13.5px;
+    font-family: 'EB Garamond', serif;
+    line-height: 1.55;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
 }
 
 .suggestion-chip:hover {
-  background: rgba(187,148,87,0.12);
-  border-color: rgba(187,148,87,0.55);
-  color: var(--light-apricot);
-  transform: translateY(-2px);
+    background: rgba(187, 148, 87, 0.12);
+    border-color: rgba(187, 148, 87, 0.55);
+    color: var(--light-apricot);
+    transform: translateY(-2px);
 }
 
 .suggestion-chip__icon {
-  color: var(--camel);
-  margin-right: 7px;
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
+    color: var(--camel);
+    margin-right: 7px;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
 }
