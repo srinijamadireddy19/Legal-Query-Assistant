@@ -54,7 +54,7 @@ class QueryService:
         # Get or create LLM instance for this conversation
         if conversation["llm_instance"] is None:
             # Create new LLM instance with isolated history
-            from llm_pipeline import LLMConfig
+            from llm_pipeline.core.models import LLMConfig
             
             llm_config = LLMConfig(
                 provider="groq",

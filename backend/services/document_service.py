@@ -28,8 +28,8 @@ class DocumentService:
         # Ensure upload directory exists
         os.makedirs(RAGConfig.UPLOAD_DIR, exist_ok=True)
         
-        # Document status tracking (in-memory for now)
-        self.documents: Dict[str, Dict[str, Any]] = {}
+        # Document status tracking (link to singleton storage)
+        self.documents = self.pm.documents
     
     async def upload_document(self, filename: str, content: bytes) -> str:
         """
@@ -40,9 +40,9 @@ class DocumentService:
         """
         # Generate document ID
         doc_id = str(uuid.uuid4())
-        
+        file_extension = filename.split(".")[-1]
         # Save file
-        file_path = os.path.join(RAGConfig.UPLOAD_DIR, f"{doc_id}_{filename}")
+        file_path = os.path.join(RAGConfig.UPLOAD_DIR, f"{doc_id}.{file_extension}")
         with open(file_path, "wb") as f:
             f.write(content)
         

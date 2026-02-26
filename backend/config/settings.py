@@ -48,7 +48,7 @@ class RAGConfig:
     
     # LLM (Groq)
     GROQ_API_KEY: str = os.getenv("GROQ_API_KEY")
-    LLM_MODEL: str = os.getenv("LLM_MODEL", "llama-8b-instant")
+    LLM_MODEL: str = os.getenv("LLM_MODEL")
     LLM_TEMPERATURE: float = float(os.getenv("LLM_TEMPERATURE", "0.1"))
     LLM_MAX_TOKENS: int = int(os.getenv("LLM_MAX_TOKENS", "1024"))
     
@@ -59,7 +59,7 @@ class RAGConfig:
     MAX_CONTEXT_LENGTH: int = int(os.getenv("MAX_CONTEXT_LENGTH", "5"))
     
     # File storage
-    UPLOAD_DIR: str = os.getenv("UPLOAD_DIR", "/tmp/rag_uploads")
+    UPLOAD_DIR: str = os.getenv("UPLOAD_DIR", "./uploads")
     
     @classmethod
     def validate(cls) -> list[str]:
@@ -102,7 +102,8 @@ class PipelineManager:
         self.storage: Optional[VectorStoragePipeline] = None
         self.llm: Optional[LLMPipeline] = None
         
-        # Conversation storage (in-memory for now)
+        # Document and conversation storage (in-memory for now)
+        self.documents: dict = {}      # doc_id -> status info
         self.conversations: dict = {}  # conversation_id -> history
         
         log.info("PipelineManager created")
