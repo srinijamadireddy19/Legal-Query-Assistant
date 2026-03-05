@@ -44,7 +44,7 @@
   margin-bottom: 10px;
   max-width: 70%;
   text-transform: italic;
-  color: gray;
+  color: rgb(0, 0, 0);
 }
 
 .user {
@@ -54,7 +54,7 @@
 }
 
 .assistant {
-  background: #e5e7eb;
+  background: #ebe5e5;
 }
 
 .chat-input {
