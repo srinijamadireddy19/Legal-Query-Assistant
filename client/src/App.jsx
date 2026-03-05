@@ -7,16 +7,25 @@ import ChatPanel from './components/ChatPanel'
 
 function App() {
   const [ready, setReady] = useState(false);
+  const [documents, setDocuments] = useState([]);
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Legal RAG UI</h1>
+    <div className='main-container'>
+      <div className='title'>
+        <h1>Legal RAG UI</h1>
+      </div>
 
-      {!ready ? (
-        <UploadPanel setReady={setReady} />
-      ) : (
-        <ChatPanel />
-      )}
+      <div className='container'>
+        <div className='sidebar'>
+          <UploadPanel setReady={setReady} documents={documents} setDocuments={setDocuments} />
+        </div>
+
+        <div className='chat'>
+          <ChatPanel ready={ready} />
+        </div>
+      </div>
+    
+      
     </div>
   )
 }

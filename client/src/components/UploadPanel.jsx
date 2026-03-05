@@ -1,61 +1,58 @@
 import React, { useState } from "react";
 import { uploadDocument, processDocument } from "../api";
 
-export default function UploadPanel({ setReady }) {
+export default function UploadPanel({ setReady, documents, setDocuments }) {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   const handleUpload = async () => {
     if (!file) {
-      setError("Please select a file to upload.");
-      return;
-    }
-
-    if (file.size > 2 * 1024 * 1024) {
-      setError("File too large. Max 2MB.");
+      setError("Select a file first");
       return;
     }
 
     try {
-      setUploading (true);
+      setUploading(true);
       setError("");
+
       const upload = await uploadDocument(file);
       const docId = upload.document_id;
 
       await processDocument(docId);
-      setUploading(true);
+
+      setDocuments((prev) => [...prev, file.name]);
 
       setReady(true);
+      setFile(null);
     } catch (err) {
-      setError("An error occurred during upload. Please try again.");
-      console.error(err);
+      setError("Upload failed");
     } finally {
       setUploading(false);
     }
-
   };
 
   return (
     <div>
-      <h3>Upload Document</h3>
+      <h3>Documents</h3>
+
+      <ul>
+        {documents.map((doc, i) => (
+          <li key={i}>📄 {doc}</li>
+        ))}
+      </ul>
 
       <input
         type="file"
-        onChange={(e) => {
-          setFile(e.target.files[0]);
-          setError("");
-        }}
+        disabled={uploading}
+        onChange={(e) => setFile(e.target.files[0])}
       />
 
-      {error && (
-        <p style={{ color: "red", marginTop: 8 }}>
-          {error}
-        </p>
-      )}
-
-      <button onClick={handleUpload} > {uploading ? "Processing..." : "Upload & Process"}</button>
-      
+      {error && <p style={{ color: "red" }}>{error}</p>}
+        <br /><br /><br />
+      <button onClick={handleUpload} disabled={!file || uploading}>
+        {uploading ? "Processing..." : "Upload"}
+      </button>
     </div>
   );
 }
